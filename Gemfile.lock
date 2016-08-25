@@ -171,9 +171,9 @@ GIT
       rest-client
 
 GIT
-  remote: https://github.com/projecthydra-labs/active_encode.git
-  revision: 5e68c05fd4023d8bc6655d9a65ae709553c7ab8f
-  tag: v0.0.3
+  remote: https://github.com/phuongdh/active_encode.git
+  revision: ad570be055a0be1e3eb07d257507f18313650f66
+  branch: elastic_transcoder
   specs:
     active_encode (0.0.2)
       activesupport

@@ -79,7 +79,7 @@
   #gem 'devise-guests'
   gem 'haml'
 
-  gem 'active_encode', git: "https://github.com/projecthydra-labs/active_encode.git", tag: 'v0.0.3'
+  gem 'active_encode', git: "https://github.com/phuongdh/active_encode.git", branch: 'elastic_transcoder'
   gem 'rubyhorn', git: "https://github.com/avalonmediasystem/rubyhorn.git"
   gem 'validates_email_format_of'
   gem 'loofah'
