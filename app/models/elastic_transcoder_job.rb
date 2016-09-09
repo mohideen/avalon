@@ -6,6 +6,7 @@ class ElasticTranscoderJob < ActiveEncode::Base
 
     file_path = self.input.sub("file://", "")
     file_name = File.basename file_path
+    output_file_name = File.basename(file_name, ".*") + ".mp4"
     uuid = SecureRandom.uuid
     upload_prefix = ENV['S3_UPLOAD_PREFIX']
     input_key = "#{upload_prefix}/#{uuid}/#{file_name}"
@@ -20,33 +21,44 @@ class ElasticTranscoderJob < ActiveEncode::Base
     hls_0400k_preset_id     = '1351620000001-200050';
     hls_1000k_preset_id     = '1351620000001-200030';
     hls_2000k_preset_id     = '1351620000001-200010';
-    flash_2200k_preset_id   = '1351620000001-100210';
+    flash_1200k_preset_id   = '1473357228814-ye0s5g';
+    flash_2200k_preset_id   = '1351620000001-000010';
+    flash_5400k_preset_id   = '1351620000001-000001';
 
-    hls_400k = {
-      key: 'quality-low/' + file_name,
+    hls_low = {
+      key: 'quality-low/hls/' + output_file_name,
       preset_id: hls_0400k_preset_id,
       segment_duration: segment_duration
     }
 
-    hls_1000k = {
-      key: 'quality-medium/' + file_name,
+    hls_medium = {
+      key: 'quality-medium/hls/' + output_file_name,
       preset_id: hls_1000k_preset_id,
       segment_duration: segment_duration
     }
 
-    hls_2000k = {
-      key: 'quality-high/' + file_name,
+    hls_high = {
+      key: 'quality-high/hls/' + output_file_name,
       preset_id: hls_2000k_preset_id,
       segment_duration: segment_duration
     }
 
-    flash_2200k = {
-      key: 'quality-high/' + file_name,
-      preset_id: flash_2200k_preset_id,
-      segment_duration: segment_duration
+    flash_low = {
+      key: 'quality-low/rtmp/' + output_file_name,
+      preset_id: flash_1200k_preset_id
     }
 
-    outputs = [ hls_400k, hls_1000k, hls_2000k, flash_2200k ]
+    flash_medium = {
+      key: 'quality-medium/rtmp/' + output_file_name,
+      preset_id: flash_2200k_preset_id
+    }
+
+    flash_high = {
+      key: 'quality-high/rtmp/' + output_file_name,
+      preset_id: flash_5400k_preset_id
+    }
+
+    outputs = [ hls_low, hls_medium, hls_high, flash_low, flash_medium, flash_high ]
 
     extra_options = { pipeline_id: ENV['AWS_PIPELINE_ID'], outputs: outputs, output_key_prefix: "#{ENV['S3_OUTPUT_PREFIX']}/#{uuid}/" }
     self.options.merge! extra_options

@@ -28,6 +28,4 @@ module Avalon
       template.result(stream_details_for(path).get_binding)
     end
   end
-  
-  StreamMapper = DefaultStreamMapper.new
 end
