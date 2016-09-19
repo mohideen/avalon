@@ -1,5 +1,4 @@
 SecurityHandler.rewrite_url do |url, context|
-  session = context[:session] || { media_token: nil }
-  token = StreamToken.find_or_create_session_token(session, context[:target])
-  "#{url}?token=#{token}"
+  signer = AwsCfSigner.new ENV['CLOUDFRONT_KEYFILE']
+  signer.sign(url, :ending => Time.now + Avalon::Configuration.lookup('streaming.stream_token_ttl').minutes.to_i)
 end
