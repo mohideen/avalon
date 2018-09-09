@@ -121,6 +121,15 @@ GIT
       chronic (>= 0.6.3)
 
 GIT
+  remote: https://github.com/mohideen/active-elastic-job.git
+  revision: edca02b607684d9883fe8477f32ef73aea3e1be6
+  tag: v2.0.1-ecs-fix
+  specs:
+    active_elastic_job (2.0.1)
+      aws-sdk (~> 2)
+      rails (>= 4.2)
+
+GIT
   remote: https://github.com/rkallensee/bootstrap-toggle-rails.git
   revision: b85df8ea25ab71628fcec1504c7182dd5d7d3606
   tag: v2.2.1.0
@@ -190,9 +199,6 @@ GEM
     active_annotations (0.2.2)
       json-ld
       rdf-vocab (~> 2.1.0)
-    active_elastic_job (2.0.1)
-      aws-sdk (~> 2)
-      rails (>= 4.2)
     active_encode (0.1.1)
       activesupport
     active_fedora-datastreams (0.1.0)
@@ -904,7 +910,7 @@ DEPENDENCIES
   about_page!
   active-fedora (~> 11.2)
   active_annotations (~> 0.2.2)
-  active_elastic_job (~> 2.0)
+  active_elastic_job!
   active_encode (~> 0.1.1)
   active_fedora-datastreams
   active_fedora-noid (~> 2.0.2)

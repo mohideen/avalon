@@ -147,7 +147,7 @@ group :aws, optional: true do
   gem 'aws-sdk-rails'
   gem 'cloudfront-signer'
   gem 'zk'
-  gem 'active_elastic_job', '~> 2.0'
+  gem 'active_elastic_job', git: "https://github.com/mohideen/active-elastic-job.git", tag: 'v2.0.1-ecs-fix'
 end
 
 # Install the bundle --with zoom to use the Z39.50 bib retriever
