@@ -144,7 +144,7 @@ end
 # Install the bundle --with aws when running on Amazon Elastic Beanstalk
 group :aws, optional: true do
   gem 'aws-sdk', '~> 3.0'
-  gem 'aws-sdk-rails'
+  gem 'aws-sdk-rails', git: 'https://github.com/nulib/aws-sdk-rails.git', branch: 'sdk-v3'
   gem 'cloudfront-signer'
   gem 'zk'
   gem 'active_elastic_job', git: 'https://github.com/nulib/active-elastic-job.git', branch: 'latest-aws-sdk'
