@@ -143,7 +143,7 @@ end
 
 # Install the bundle --with aws when running on Amazon Elastic Beanstalk
 group :aws, optional: true do
-  gem 'aws-sdk', '~> 2.0'
+  gem 'aws-sdk', '~> 3.0'
   gem 'aws-sdk-rails'
   gem 'cloudfront-signer'
   gem 'zk'
